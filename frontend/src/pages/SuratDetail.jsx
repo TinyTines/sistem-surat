@@ -88,7 +88,37 @@ export default function SuratDetail() {
             </div>
           </div>
 
-          {/* Action buttons (penerima only, status belum final) */}
+          
+            {/* Action buttons (pengaju only) */}
+            {user?.role === 'pengaju' && (
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                {canEdit && (
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => navigate(`/surat/${id}/edit`)}
+                  >
+                    Edit Surat
+                  </button>
+                )}
+                <button
+                  className="btn btn-danger"
+                  onClick={async () => {
+                    if (!window.confirm("Yakin ingin menghapus surat ini?")) return;
+                    try {
+                      await api.del(`/surat/${id}`);
+                      navigate('/');
+                    } catch (err) {
+                      alert(err.message || "Gagal menghapus surat");
+                    }
+                  }}
+                >
+                  Hapus
+                </button>
+              </div>
+            )}
+
+            {/* Action buttons (penerima only, status belum final) */}
+
           {user?.role === 'penerima' && !isFinal && (
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               {STATUS_ACTIONS.map(a => (
