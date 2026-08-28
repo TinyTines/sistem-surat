@@ -69,7 +69,22 @@ export default function SuratDetail() {
     </div>
   );
 
+  
+  let canEdit = false;
+  if (user?.role === 'pengaju' && surat?.status !== 'disetujui' && surat?.status !== 'ditolak') {
+    canEdit = true;
+    if (surat?.diperlukanUntuk) {
+      const deadline = new Date(surat.diperlukanUntuk);
+      const now = new Date();
+      deadline.setHours(0,0,0,0);
+      now.setHours(0,0,0,0);
+      const diffDays = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
+      if (diffDays < 3) canEdit = false;
+    }
+  }
+
   const isFinal = surat.status === 'disetujui' || surat.status === 'ditolak';
+
 
   return (
     <div className="layout">
