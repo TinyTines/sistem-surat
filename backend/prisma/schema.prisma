@@ -1,0 +1,104 @@
+// Generator: prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Database: MySQL
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────
+// ENUM DEFINITIONS
+// ──────────────────────────────────────────
+
+enum Role {
+  pengaju
+  penerima
+}
+
+enum JenisSurat {
+  TOR
+  SPJ
+  SK
+  UND
+  Lainnya
+}
+
+enum StatusSurat {
+  diajukan
+  direvisi
+  disetujui
+  ditolak
+}
+
+// ──────────────────────────────────────────
+// TABLE: users
+// ──────────────────────────────────────────
+
+model User {
+  id         Int      @id @default(autoincrement())
+  nama       String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(150)
+  password   String   @db.VarChar(255)
+  role       Role     @default(pengaju)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  // Relasi
+  suratDiajukan Surat[]     @relation("PengajuRelation")
+  statusLogs    StatusLog[]
+
+  @@map("users")
+}
+
+// ──────────────────────────────────────────
+// TABLE: surat
+// ──────────────────────────────────────────
+
+model Surat {
+  id               Int         @id @default(autoincrement())
+  pengajuId        Int         @map("pengaju_id")
+  perihal          String      @db.VarChar(255)
+  jenisSurat       JenisSurat  @map("jenis_surat")
+  kodeJenisCustom  String?     @db.VarChar(10) @map("kode_jenis_custom")
+  isiSurat         String      @db.Text @map("isi_surat")
+  departemen       String?     @db.VarChar(50)
+  tandaTangan      String?     @db.VarChar(255) @map("tanda_tangan")   // JSON array: ["Pembina","Komandan"]
+  diperlukanUntuk  DateTime?   @map("diperlukan_untuk")
+  fileLampiran     String?     @db.VarChar(500) @map("file_lampiran")
+  status           StatusSurat @default(diajukan)
+  nomorSurat       String?     @unique @db.VarChar(100) @map("nomor_surat")
+  tanggalDiajukan  DateTime    @default(now()) @map("tanggal_diajukan")
+  tanggalDisetujui DateTime?   @map("tanggal_disetujui")
+  catatanPenerima  String?     @db.Text @map("catatan_penerima")
+  createdAt        DateTime    @default(now()) @map("created_at")
+  updatedAt        DateTime    @updatedAt @map("updated_at")
+
+  // Relasi
+  pengaju    User        @relation("PengajuRelation", fields: [pengajuId], references: [id])
+  statusLogs StatusLog[]
+
+  @@map("surat")
+}
+
+// ──────────────────────────────────────────
+// TABLE: status_log (audit trail)
+// ──────────────────────────────────────────
+
+model StatusLog {
+  id         Int      @id @default(autoincrement())
+  suratId    Int      @map("surat_id")
+  userId     Int      @map("user_id")
+  statusLama String   @db.VarChar(50) @map("status_lama")
+  statusBaru String   @db.VarChar(50) @map("status_baru")
+  catatan    String?  @db.Text
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relasi
+  surat Surat @relation(fields: [suratId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@map("status_log")
+}

@@ -1,0 +1,44 @@
+{
+  "name": "sistem-surat-ksrpmi",
+  "version": "1.0.0",
+  "description": "Sistem Pengajuan Surat Digital KSR PMI Unit Universitas Telkom",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:seed": "node prisma/seed.js",
+    "db:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [
+    "ksr-pmi",
+    "surat",
+    "manajemen-surat"
+  ],
+  "author": "KSR PMI Unit Universitas Telkom",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.2.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^5.22.0",
+    "nodemon": "^3.1.14",
+    "prisma": "^5.22.0"
+  },
+  "allowScripts": {
+    "@prisma/client@5.22.0": true,
+    "prisma@5.22.0": true,
+    "@prisma/engines@5.22.0": true
+  }
+}
