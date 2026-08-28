@@ -1,7 +1,7 @@
 {
   "name": "sistem-surat-ksrpmi",
   "version": "1.0.0",
-  "description": "Sistem Pengajuan Surat Digital KSR PMI Unit Universitas Telkom",
+  "description": "Sistem Pengajuan Surat Digital KSR PMI Unit ",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -20,7 +20,7 @@
     "surat",
     "manajemen-surat"
   ],
-  "author": "KSR PMI Unit Universitas Telkom",
+  "author": "KSR PMI Unit ",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

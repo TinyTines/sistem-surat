@@ -18,11 +18,11 @@ async function main() {
 
   // Buat user pengaju
   const pengaju = await prisma.user.upsert({
-    where: { email: 'pengaju@ksrpmi.com' },
+    where: { email: 'pengaju@ormawa.com' },
     update: {},
     create: {
       nama: 'Budi Santoso',
-      email: 'pengaju@ksrpmi.com',
+      email: 'pengaju@ormawa.com',
       password: hashedPassword,
       role: 'pengaju',
     },
@@ -30,11 +30,11 @@ async function main() {
 
   // Buat user penerima (sekretaris)
   const penerima = await prisma.user.upsert({
-    where: { email: 'sekretaris@ksrpmi.com' },
+    where: { email: 'sekretaris@ormawa.com' },
     update: {},
     create: {
       nama: 'Ani Rahayu',
-      email: 'sekretaris@ksrpmi.com',
+      email: 'sekretaris@ormawa.com',
       password: hashedPassword,
       role: 'penerima',
     },

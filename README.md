@@ -54,5 +54,5 @@ Buka: http://localhost:5173
 
 | Role | Email | Password |
 |---|---|---|
-| Pengaju | pengaju@ksrpmi.com | password123 |
-| Penerima | sekretaris@ksrpmi.com | password123 |
+| Pengaju | pengaju@ormawa.com | password123 |
+| Penerima | sekretaris@ormawa.com | password123 |

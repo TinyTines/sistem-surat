@@ -1,4 +1,4 @@
-# 📋 Sistem Surat Digital — KSR PMI Unit Universitas Telkom
+# 📋 Sistem Surat Digital — KSR PMI Unit 
 
 Backend API untuk manajemen pengajuan surat organisasi, dibangun dengan **Express.js + Prisma ORM + MySQL**.
 
@@ -37,8 +37,8 @@ npm run db:seed
 Ini akan membuat 2 akun:
 | Role | Email | Password |
 |---|---|---|
-| Pengaju | pengaju@ksrpmi.com | password123 |
-| Penerima | sekretaris@ksrpmi.com | password123 |
+| Pengaju | pengaju@ormawa.com | password123 |
+| Penerima | sekretaris@ormawa.com | password123 |
 
 ### 5. Jalankan Server
 ```bash

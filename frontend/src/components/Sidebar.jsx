@@ -37,7 +37,7 @@ export default function Sidebar() {
         <RedCross size={38} />
         <div>
           <div className="sidebar-logo-title">Organisasi Mahasiswa XYZ</div>
-          <div className="sidebar-logo-sub">Universitas Telkom</div>
+          
         </div>
       </div>
 

@@ -5,8 +5,8 @@ import { api } from "../api/client";
 import RedCross from "../components/RedCross";
 
 const DEMO_ACCOUNTS = [
-  { role: "Pengaju", email: "pengaju@ksrpmi.com", password: "password123" },
-  { role: "Penerima", email: "sekretaris@ksrpmi.com", password: "password123" },
+  { role: "Pengaju", email: "pengaju@ormawa.com", password: "password123" },
+  { role: "Penerima", email: "sekretaris@ormawa.com", password: "password123" },
 ];
 
 export default function Login() {
@@ -53,7 +53,7 @@ export default function Login() {
           <RedCross size={48} />
           <div style={{ marginLeft: "12px" }}>
             <div className="login-left-title">Organisasi Mahasiswa XYZ</div>
-            <div className="login-left-sub">Universitas Telkom</div>
+            
           </div>
         </div>
 
