@@ -187,15 +187,15 @@ export default function SuratBuat() {
 
               <div className="form-group">
                 <label className="form-label" htmlFor="diperlukanUntuk">
-                  Diperlukan Untuk Kapan
+                  Diperlukan Untuk Kapan *
                 </label>
                 <input
                   id="diperlukanUntuk" name="diperlukanUntuk" type="date"
                   className="form-input"
                   min={new Date().toISOString().split("T")[0]}
-                  value={form.diperlukanUntuk} onChange={handleChange}
+                  value={form.diperlukanUntuk} onChange={handleChange} required
                 />
-                <p className="form-hint">Tanggal kebutuhan surat (opsional)</p>
+                <p className="form-hint">Tanggal kebutuhan surat (*Wajib)</p>
               </div>
             </div>
 

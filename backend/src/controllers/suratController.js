@@ -20,7 +20,7 @@ const createSuratValidation = [
   body('isiSurat').trim().notEmpty().withMessage('Isi surat wajib diisi'),
   body('departemen').optional().isString(),
   body('tandaTangan').optional(), // JSON array string: '["Pembina","Komandan"]'
-  body('diperlukanUntuk').optional().isISO8601().withMessage('Format tanggal tidak valid'),
+  body('diperlukanUntuk').notEmpty().withMessage('Tanggal keperluan wajib diisi').isISO8601().withMessage('Format tanggal tidak valid'),
 ];
 
 const updateStatusValidation = [
@@ -283,3 +283,4 @@ module.exports = {
   createSuratValidation,
   updateStatusValidation,
 };
+
